@@ -1,0 +1,164 @@
+CREATE TABLE profile(
+    profile_id INTEGER NOT NULL AUTO_INCREMENT,
+    mergious_id INTEGER,
+    name VARCHAR(255),
+    address VARCHAR(255),
+    city VARCHAR(255),
+    district VARCHAR(255),
+    pincode VARCHAR(255),
+    mobile_number VARCHAR(255),
+    alternate_mobile_number VARCHAR(255),
+    email VARCHAR(255),
+    gender VARCHAR(255),
+    dob VARCHAR(255),
+    community VARCHAR(255),
+    father_education VARCHAR(255),
+    father_field_of_study VARCHAR(255),
+    mother_education VARCHAR(255),
+    mother_field_of_study VARCHAR(255),
+    PRIMARY KEY(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE education(
+    education_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    type VARCHAR(255),
+    course VARCHAR(255),
+    subject VARCHAR(255),
+    institution VARCHAR(255),
+    completed VARCHAR(255),
+    grade VARCHAR(255),
+    PRIMARY KEY(education_id),
+    FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE it_proficiency(
+    it_proficiency_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    degree VARCHAR(255),
+    course VARCHAR(255),
+    institution VARCHAR(255),
+    programing_language VARCHAR(255),
+    web_social_media VARCHAR(255),
+    other VARCHAR(255),
+    PRIMARY KEY(it_proficiency_id),
+    FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE language_proficiency(
+    language_proficiency_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    language_name VARCHAR(255),
+    read_proficiency VARCHAR(255),
+    write_proficiency VARCHAR(255),
+    speak_proficiency VARCHAR(255),
+    PRIMARY KEY(language_proficiency_id), 
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE skill_training(
+    skill_training_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    training VARCHAR(255),
+    topic VARCHAR(255),
+    agency VARCHAR(255),
+    duration VARCHAR(255),
+    sector VARCHAR(255),
+    completed VARCHAR(255),
+    completed_year VARCHAR(255),
+    reason_for_discontinuation VARCHAR(1024),
+    PRIMARY KEY(skill_training_id), 
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE traditional_skill(
+    traditional_skill_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    tribal_agriculture INTEGER,
+    animal_husbandry INTEGER,
+    handloom INTEGER,
+    food_processing INTEGER,
+    honey_collection INTEGER,
+    bamboo_craft INTEGER,
+    tribal_housing INTEGER,
+    treatment INTEGER,
+    identification INTEGER,
+    medicine_preparation INTEGER,
+    PRIMARY KEY(traditional_skill_id),
+    FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE employment_data(
+    employment_data_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    position VARCHAR(255),
+    employer VARCHAR(255),
+    nature VARCHAR(255),
+    income INTEGER,
+    status VARCHAR(255),
+    reason_for_discontinuation VARCHAR(1024),
+    PRIMARY KEY(employment_data_id),
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE informal_sector(
+    informal_sector_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    sector VARCHAR(255),
+    position VARCHAR(255),
+    years INTEGER,
+    skills VARCHAR(255),
+    community_service VARCHAR(255),
+    roles_in_community_service VARCHAR(255),
+    guarantee_scheme VARCHAR(255),
+    PRIMARY KEY(informal_sector_id), 
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE employment_interest(
+    employment_interest_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    interested_field VARCHAR(255),
+    relocate VARCHAR(255),
+    outside_state VARCHAR(255),
+    outside_country VARCHAR(255),
+    job_role VARCHAR(255),
+    PRIMARY KEY(employment_interest_id),
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE capacity_development(
+    capacity_development_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    communication INTEGER,
+    computer INTEGER,
+    job_skill INTEGER,
+    soft_skill INTEGER,
+    other VARCHAR(255),
+    PRIMARY KEY(capacity_development_id),
+    FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE cultural_interests(
+    cultural_interests_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    singing VARCHAR(255),
+    dancing VARCHAR(255),
+    performing_arts VARCHAR(255),
+    other VARCHAR(255),
+    PRIMARY KEY(cultural_interests_id),
+    FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE entrepreneurship(
+    entrepreneurship_id INTEGER NOT NULL AUTO_INCREMENT,
+    profile_id INTEGER,
+    field VARCHAR(255),
+    description VARCHAR(255),
+    experience VARCHAR(255),
+    sector VARCHAR(255),
+    years INTEGER,
+    activities VARCHAR(255),
+    PRIMARY KEY(entrepreneurship_id),
+    FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

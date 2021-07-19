@@ -2,10 +2,10 @@ var mysql = require('mysql2');
 
 //db config
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Akhiljith@My112",
-  database: 'vtee'
+  host: "156.67.222.81",
+  user: "u250186539_vtee",
+  password: "Vtee@123",
+  database: 'u250186539_vtee'
 });
 
 // for connect db
@@ -14,10 +14,10 @@ con.connect(err => {
   console.log("Database connected :)");
 });
 
-let vteeDb = {};
+let vteeDBOperations = {};
 
 // for select data from table use this example
-vteeDb.getAlluser = ()=>{
+vteeDBOperations.getAlluser = ()=>{
   return new Promise((resolve,reject)=>{
     con.query('SELECT * FROM users', (err,rows) => {
       if(err) throw err;
@@ -29,13 +29,14 @@ vteeDb.getAlluser = ()=>{
 }
 
 // for insert into table use this example
-vteeDb.insertOne = (data)=>{
+vteeDBOperations.insertProfile = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO users SET ?', data, (err, res) => {
+    con.query('INSERT INTO profile SET ?', data, (err, res) => {
       if(err) throw err;
       console.log('Last insert ID:', res.insertId);
+      resolve(res.insertId);
     });
   })
 }
 
-module.exports = vteeDb;
+module.exports = vteeDBOperations;
