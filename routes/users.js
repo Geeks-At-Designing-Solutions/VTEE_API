@@ -3,11 +3,9 @@ var router = express.Router();
 var db = require('../database');
 
 //for post req data are in req.body
-// router.post('/add-my-profile', (req, res, next)=>{
-//   let data=req.body;
-//   db.insertOne(data).then((value)=>{});
-//   res.end();
-// })
+router.get('/add-my-profile', (req, res, next)=>{
+  res.send('Hello World');
+})
 
 router.post('/', (req, res, next)=>{
   let data=req.body;
