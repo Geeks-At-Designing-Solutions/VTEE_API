@@ -2,7 +2,7 @@ CREATE TABLE profile(
     profile_id INTEGER NOT NULL AUTO_INCREMENT,
     mergious_id INTEGER,
     name VARCHAR(255),
-    address VARCHAR(255),
+    address VARCHAR(1024),
     city VARCHAR(255),
     district VARCHAR(255),
     pincode VARCHAR(255),
@@ -11,11 +11,11 @@ CREATE TABLE profile(
     email VARCHAR(255),
     gender VARCHAR(255),
     dob VARCHAR(255),
-    community VARCHAR(255),
+    community VARCHAR(1024),
     father_education VARCHAR(255),
-    father_field_of_study VARCHAR(255),
+    father_field_of_study VARCHAR(1024),
     mother_education VARCHAR(255),
-    mother_field_of_study VARCHAR(255),
+    mother_field_of_study VARCHAR(1024),
     PRIMARY KEY(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24,8 +24,8 @@ CREATE TABLE education(
     profile_id INTEGER,
     type VARCHAR(255),
     course VARCHAR(255),
-    subject VARCHAR(255),
-    institution VARCHAR(255),
+    subject VARCHAR(1024),
+    institution VARCHAR(1024),
     completed VARCHAR(255),
     grade VARCHAR(255),
     PRIMARY KEY(education_id),
@@ -35,12 +35,12 @@ CREATE TABLE education(
 CREATE TABLE it_proficiency(
     it_proficiency_id INTEGER NOT NULL AUTO_INCREMENT,
     profile_id INTEGER,
-    degree VARCHAR(255),
-    course VARCHAR(255),
-    institution VARCHAR(255),
-    programing_language VARCHAR(255),
-    web_social_media VARCHAR(255),
-    other VARCHAR(255),
+    degree VARCHAR(1024),
+    course VARCHAR(1024),
+    institution VARCHAR(1024),
+    programing_language VARCHAR(1024),
+    web_social_media VARCHAR(1024),
+    other VARCHAR(1024),
     PRIMARY KEY(it_proficiency_id),
     FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -59,12 +59,11 @@ CREATE TABLE language_proficiency(
 CREATE TABLE skill_training(
     skill_training_id INTEGER NOT NULL AUTO_INCREMENT,
     profile_id INTEGER,
-    training VARCHAR(255),
-    topic VARCHAR(255),
-    agency VARCHAR(255),
+    training VARCHAR(1024),
+    topic VARCHAR(1024),
+    agency VARCHAR(1024),
     duration VARCHAR(255),
-    sector VARCHAR(255),
-    completed VARCHAR(255),
+    sector VARCHAR(1024),
     completed_year VARCHAR(255),
     reason_for_discontinuation VARCHAR(1024),
     PRIMARY KEY(skill_training_id), 
@@ -88,14 +87,13 @@ CREATE TABLE traditional_skill(
     FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE employment_data(
+CREATE TABLE employement_data(
     employment_data_id INTEGER NOT NULL AUTO_INCREMENT,
     profile_id INTEGER,
-    position VARCHAR(255),
-    employer VARCHAR(255),
+    position VARCHAR(1024),
+    employer VARCHAR(1024),
     nature VARCHAR(255),
-    income INTEGER,
-    status VARCHAR(255),
+    income VARCHAR(255),
     reason_for_discontinuation VARCHAR(1024),
     PRIMARY KEY(employment_data_id),
     FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
@@ -115,10 +113,10 @@ CREATE TABLE informal_sector(
     FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE employment_interest(
+CREATE TABLE employement_interest(
     employment_interest_id INTEGER NOT NULL AUTO_INCREMENT,
     profile_id INTEGER,
-    interested_field VARCHAR(255),
+    interested_field VARCHAR(1024),
     relocate VARCHAR(255),
     outside_state VARCHAR(255),
     outside_country VARCHAR(255),
@@ -134,7 +132,7 @@ CREATE TABLE capacity_development(
     computer INTEGER,
     job_skill INTEGER,
     soft_skill INTEGER,
-    other VARCHAR(255),
+    specific_skill_training VARCHAR(1024),
     PRIMARY KEY(capacity_development_id),
     FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -145,7 +143,7 @@ CREATE TABLE cultural_interests(
     singing VARCHAR(255),
     dancing VARCHAR(255),
     performing_arts VARCHAR(255),
-    other VARCHAR(255),
+    other VARCHAR(1024),
     PRIMARY KEY(cultural_interests_id),
     FOREIGN KEY (profile_id) REFERENCES profile(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -153,12 +151,11 @@ CREATE TABLE cultural_interests(
 CREATE TABLE entrepreneurship(
     entrepreneurship_id INTEGER NOT NULL AUTO_INCREMENT,
     profile_id INTEGER,
-    field VARCHAR(255),
-    description VARCHAR(255),
-    experience VARCHAR(255),
+    field VARCHAR(1024),
+    description VARCHAR(5000),
     sector VARCHAR(255),
-    years INTEGER,
-    activities VARCHAR(255),
+    years VARCHAR(255),
+    activities VARCHAR(2048),
     PRIMARY KEY(entrepreneurship_id),
     FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
