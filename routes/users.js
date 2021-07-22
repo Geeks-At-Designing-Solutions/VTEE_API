@@ -166,16 +166,31 @@ router.post('/', async (req, res, next)=>{
     }
   );
 
-  db.insertCapacityDevelopment(
-    {
-      "profile_id":profileId,
-      "communication":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Communication Skills") ? 1 : 0,
-      "computer":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Computer & IT skills") ? 1 : 0,
-      "job_skill":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Job oriented skills") ? 1 : 0,
-      "soft_skill":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Life skills / Soft Skills") ? 1 : 0,
-      "specific_skill_training":data["capacityDevelopmentRequired"]["specificSkilltraining"],
+  if(Object.keys(data["capacityDevelopmentRequired"]).length !== 0){
+    if(data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].length === 0){
+      db.insertCapacityDevelopment(
+        {
+          "profile_id":profileId,
+          "communication":0,
+          "computer":0,
+          "job_skill":0,
+          "soft_skill":0,
+          "specific_skill_training":data["capacityDevelopmentRequired"]["specificSkilltraining"],
+        }
+      );
+    }else{
+      db.insertCapacityDevelopment(
+        {
+          "profile_id":profileId,
+          "communication":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Communication Skills") ? 1 : 0,
+          "computer":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Computer & IT skills") ? 1 : 0,
+          "job_skill":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Job oriented skills") ? 1 : 0,
+          "soft_skill":data["capacityDevelopmentRequired"]["capacityDevelopmentFields"].includes("Life skills / Soft Skills") ? 1 : 0,
+          "specific_skill_training":data["capacityDevelopmentRequired"]["specificSkilltraining"],
+        }
+      );
     }
-  );
+  }
 
   db.insertCulturalTalents(
     {
@@ -187,7 +202,7 @@ router.post('/', async (req, res, next)=>{
     }
   );
 
-  if(data["entrepreneurshipInterests"] !== ""){
+   if(Object.keys(data["entrepreneurshipInterests"]).length !== 0){
     db.insertEntrepreneurship(
       {
         "profile_id":profileId,
