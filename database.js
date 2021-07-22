@@ -1,18 +1,11 @@
 var mysql = require('mysql2');
 
 //db config
-// var con = mysql.createConnection({
-//   host: "156.67.222.81",
-//   user: "u250186539_vtee",
-//   password: "Vtee@123",
-//   database: 'u250186539_vtee'
-// });
-
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: 'vtee'
+  host: "156.67.222.81",
+  user: "u250186539_vtee",
+  password: "Vtee@123",
+  database: 'u250186539_vtee'
 });
 
 // for connect db
