@@ -29,8 +29,6 @@ vteeDBOperations.insertProfile = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert profile: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -51,8 +49,6 @@ vteeDBOperations.insertEducation = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert education: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -73,8 +69,6 @@ vteeDBOperations.insertITProficiency = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert it_proficency: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -95,8 +89,6 @@ vteeDBOperations.insertLanguageProficiency = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert language_proficency: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -117,8 +109,6 @@ vteeDBOperations.insertSkillTraining = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert skill_training: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -139,8 +129,6 @@ vteeDBOperations.insertTraditionalSkills = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert traditional_skills: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -161,8 +149,6 @@ vteeDBOperations.insertEmployementData = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert employement_data: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -183,8 +169,6 @@ vteeDBOperations.insertInformalWorkExperience = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert informal_sector: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -205,8 +189,6 @@ vteeDBOperations.insertEmployementInterests = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert employement_interest: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -227,8 +209,6 @@ vteeDBOperations.insertCapacityDevelopment = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert capacity_development: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -249,8 +229,6 @@ vteeDBOperations.insertCulturalTalents = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert cultural_interests: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
@@ -271,8 +249,6 @@ vteeDBOperations.insertEntrepreneurship = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert entrepreneurship: ${err.message}`);
-    } finally {
-      conn.destroy();
     }
   });
 }
