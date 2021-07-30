@@ -60,7 +60,7 @@ vteeDBOperations.insertITProficiency = (data)=>{
         if (err){
           console.log(err);
         }else{
-          conn.query('INSERT INTO it_proficency SET ?', data, (err, res) => {
+          conn.query('INSERT INTO it_proficiency SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert IT Proficiency ID:', res.insertId);
           });
