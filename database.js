@@ -42,7 +42,7 @@ vteeDBOperations.insertEducation = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO education SET ?', data, (err, res) => {
+          conn.query('INSERT INTO education SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Education ID:', res.insertId);
           });
@@ -64,7 +64,7 @@ vteeDBOperations.insertITProficiency = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO it_proficency SET ?', data, (err, res) => {
+          conn.query('INSERT INTO it_proficency SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert IT Proficiency ID:', res.insertId);
           });
@@ -86,7 +86,7 @@ vteeDBOperations.insertLanguageProficiency = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO language_proficiency SET ?', data, (err, res) => {
+          conn.query('INSERT INTO language_proficiency SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Language Proficiency ID:', res.insertId);
           });
@@ -108,7 +108,7 @@ vteeDBOperations.insertSkillTraining = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO skill_training SET ?', data, (err, res) => {
+          conn.query('INSERT INTO skill_training SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Skill Training ID:', res.insertId);
           });
@@ -130,7 +130,7 @@ vteeDBOperations.insertTraditionalSkills = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO traditional_skill SET ?', data, (err, res) => {
+          conn.query('INSERT INTO traditional_skill SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Traditional Skill ID:', res.insertId);
           });
@@ -152,7 +152,7 @@ vteeDBOperations.insertEmployementData = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO employement_data SET ?', data, (err, res) => {
+          conn.query('INSERT INTO employement_data SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Employement Data ID:', res.insertId);
           });
@@ -174,7 +174,7 @@ vteeDBOperations.insertInformalWorkExperience = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO informal_sector SET ?', data, (err, res) => {
+          conn.query('INSERT INTO informal_sector SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Informal Experience ID:', res.insertId);
           });
@@ -196,7 +196,7 @@ vteeDBOperations.insertEmployementInterests = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO employement_interest SET ?', data, (err, res) => {
+          conn.query('INSERT INTO employement_interest SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Employement Interests ID:', res.insertId);
           });
@@ -218,7 +218,7 @@ vteeDBOperations.insertCapacityDevelopment = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO capacity_development SET ?', data, (err, res) => {
+          conn.query('INSERT INTO capacity_development SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Capacity Development ID:', res.insertId);
           });
@@ -240,7 +240,7 @@ vteeDBOperations.insertCulturalTalents = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO cultural_interests SET ?', data, (err, res) => {
+          conn.query('INSERT INTO cultural_interests SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Cultural Interests ID:', res.insertId);
           });
@@ -262,7 +262,7 @@ vteeDBOperations.insertEntrepreneurship = (data)=>{
         if (err){
           console.log(err);
         }else{
-          con.query('INSERT INTO entrepreneurship SET ?', data, (err, res) => {
+          conn.query('INSERT INTO entrepreneurship SET ?', data, (err, res) => {
             if(err) throw err;
             console.log('Last insert Entrepreneurship ID:', res.insertId);
           });
