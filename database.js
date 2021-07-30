@@ -1,17 +1,12 @@
 var mysql = require('mysql2');
 
 //db config
-var con = mysql.createConnection({
+var pool = mysql.createPool({
+  connectionLimit:10,
   host: "156.67.222.81",
   user: "u250186539_vtee",
   password: "Vtee@123",
   database: 'u250186539_vtee'
-});
-
-// for connect db
-con.connect(err => {
-  if (err){ console.log("Database not connected :("); throw err;}
-  console.log("Database connected :)");
 });
 
 let vteeDBOperations = {};
@@ -19,111 +14,267 @@ let vteeDBOperations = {};
 // for insert into table use this example
 vteeDBOperations.insertProfile = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO profile SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Profile ID:', res.insertId);
-      resolve(res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          conn.query('INSERT INTO profile SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Profile ID:', res.insertId);
+            resolve(res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert profile: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertEducation = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO education SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Education ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO education SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Education ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert education: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertITProficiency = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO it_proficency SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert IT Proficiency ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO it_proficency SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert IT Proficiency ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert it_proficency: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertLanguageProficiency = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO language_proficiency SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Language Proficiency ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO language_proficiency SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Language Proficiency ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert language_proficency: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertSkillTraining = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO skill_training SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Skill Training ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO skill_training SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Skill Training ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert skill_training: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertTraditionalSkills = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO traditional_skill SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Traditional Skill ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO traditional_skill SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Traditional Skill ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert traditional_skills: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertEmployementData = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO employement_data SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Employement Data ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO employement_data SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Employement Data ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert employement_data: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertInformalWorkExperience = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO informal_sector SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Informal Experience ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO informal_sector SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Informal Experience ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert informal_sector: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertEmployementInterests = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO employement_interest SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Employement Interests ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO employement_interest SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Employement Interests ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert employement_interest: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertCapacityDevelopment = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO capacity_development SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Capacity Development ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO capacity_development SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Capacity Development ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert capacity_development: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertCulturalTalents = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO cultural_interests SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Cultural Interests ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO cultural_interests SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Cultural Interests ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert cultural_interests: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 vteeDBOperations.insertEntrepreneurship = (data)=>{
   return new Promise((resolve,reject)=>{
-    con.query('INSERT INTO entrepreneurship SET ?', data, (err, res) => {
-      if(err) throw err;
-      console.log('Last insert Entrepreneurship ID:', res.insertId);
-    });
-  })
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          con.query('INSERT INTO entrepreneurship SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Entrepreneurship ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert entrepreneurship: ${err.message}`);
+    } finally {
+      conn.destroy();
+    }
+  });
 }
 
 module.exports = vteeDBOperations;

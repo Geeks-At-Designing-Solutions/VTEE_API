@@ -5,6 +5,7 @@ var db = require('../database');
 router.post('/', async (req, res, next)=>{
   let data = req.body;
   let profileId = -1;
+  console.log(data);
   profileId = await db.insertProfile(
     {
       "mergious_id":data["profile"]["mergiousId"],
