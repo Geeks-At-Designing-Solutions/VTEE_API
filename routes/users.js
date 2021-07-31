@@ -203,7 +203,7 @@ router.post('/', async (req, res, next)=>{
     }
   );
 
-   if(Object.keys(data["entrepreneurshipInterests"]) === 'N/A'){
+   if(Object.keys(data["entrepreneurshipInterests"]) !== 'N/A'){
     db.insertEntrepreneurship(
       {
         "profile_id":profileId,
