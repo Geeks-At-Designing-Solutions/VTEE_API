@@ -1,20 +1,12 @@
 var mysql = require('mysql2');
 
 //db config
-// var pool = mysql.createPool({
-//   connectionLimit:10,
-//   host: "156.67.222.81",
-//   user: "u250186539_vtee",
-//   password: "Vtee@123",
-//   database: 'u250186539_vtee'
-// });
-
 var pool = mysql.createPool({
   connectionLimit:10,
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: 'vtee'
+  host: "156.67.222.81",
+  user: "u250186539_vtee",
+  password: "Vtee@123",
+  database: 'u250186539_vtee'
 });
 
 let vteeDBOperations = {};
