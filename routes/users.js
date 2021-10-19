@@ -217,6 +217,12 @@ router.post('/', async (req, res, next)=>{
   }
 
   res.end();
+});
+
+router.get('/', async (req, res, next)=>{
+  db.getEndPoint().then((data)=>{
+    res.json(data[0]);
+  });
 })
 
 module.exports = router;

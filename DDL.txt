@@ -159,3 +159,12 @@ CREATE TABLE entrepreneurship(
     PRIMARY KEY(entrepreneurship_id),
     FOREIGN KEY(profile_id)REFERENCES profile(profile_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE config(
+    config_id INTEGER NOT NULL AUTO_INCREMENT,
+    authority VARCHAR(1024),
+    unencodedPath VARCHAR(1024),
+    maintainence INTEGER,
+    flag INTEGER,
+    PRIMARY KEY(config_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

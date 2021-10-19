@@ -1,12 +1,20 @@
 var mysql = require('mysql2');
 
 //db config
+// var pool = mysql.createPool({
+//   connectionLimit:10,
+//   host: "156.67.222.81",
+//   user: "u250186539_vtee",
+//   password: "Vtee@123",
+//   database: 'u250186539_vtee'
+// });
+
 var pool = mysql.createPool({
   connectionLimit:10,
-  host: "156.67.222.81",
-  user: "u250186539_vtee",
-  password: "Vtee@123",
-  database: 'u250186539_vtee'
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: 'vtee'
 });
 
 let vteeDBOperations = {};
@@ -249,6 +257,26 @@ vteeDBOperations.insertEntrepreneurship = (data)=>{
       });
     } catch (err) {
       console.log(`Error doing insert entrepreneurship: ${err.message}`);
+    }
+  });
+}
+
+vteeDBOperations.getEndPoint = ()=>{
+  return new Promise((resolve,reject)=>{
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          conn.query('SELECT * FROM config WHERE flag = 1', (err, res) => {
+            if(err) throw err;
+            resolve(res);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error fetching config data: ${err.message}`);
     }
   });
 }
