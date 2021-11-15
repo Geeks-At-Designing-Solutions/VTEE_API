@@ -113,6 +113,26 @@ vteeDBOperations.insertSkillTraining = (data)=>{
   });
 }
 
+vteeDBOperations.insertTrainingPrograms = (data)=>{
+  return new Promise((resolve,reject)=>{
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          conn.query('INSERT INTO training_programs SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Training Programs ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert training_programs: ${err.message}`);
+    }
+  });
+}
+
 vteeDBOperations.insertTraditionalSkills = (data)=>{
   return new Promise((resolve,reject)=>{
     try {

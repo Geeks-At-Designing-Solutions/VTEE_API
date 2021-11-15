@@ -90,6 +90,56 @@ router.post('/', async (req, res, next)=>{
     }
   }
 
+  if(data["trainingProgramsDetails"].length === 0){
+    db.insertTrainingPrograms(
+      {
+        "profile_id":profileId,
+        "organic_farming":0,
+        "fruits_vegetable_processing":0,
+        "arc_gas_welding":0,
+        "pipe_fabricator":0,
+        "refrigeration_ac_mechanic":0,
+        "tinkering_painting":0,
+        "auto_diagnosis_repair":0,
+        "cnc_operator":0,
+        "assembly_line_operator":0,
+        "fabric_textile":0,
+        "nursing":0,
+        "panchakarma":0,
+        "animation":0,
+        "digital_marketing":0,
+        "digital_media_production":0,
+        "bakery":0,
+        "architecture":0,
+        "iata":0,
+      }
+    );    
+  }else{
+    db.insertTrainingPrograms(
+      {
+        "profile_id":profileId,
+        "organic_farming":data["trainingProgramsDetails"].includes("Organic Farming") ? 1 : 0,
+        "fruits_vegetable_processing":data["trainingProgramsDetails"].includes("Fruits and Vegetables Processing") ? 1 : 0,
+        "arc_gas_welding":data["trainingProgramsDetails"].includes("Arc & Gas Welder") ? 1 : 0,
+        "pipe_fabricator":data["trainingProgramsDetails"].includes("Pipe Fabricator") ? 1 : 0,
+        "refrigeration_ac_mechanic":data["trainingProgramsDetails"].includes("Refrigeration Air Condition Mechanic") ? 1 : 0,
+        "tinkering_painting":data["trainingProgramsDetails"].includes("Tinkering & Painting") ? 1 : 0,
+        "auto_diagnosis_repair":data["trainingProgramsDetails"].includes("Auto Diagnosis & Repair") ? 1 : 0,
+        "cnc_operator":data["trainingProgramsDetails"].includes("CNC Operator") ? 1 : 0,
+        "assembly_line_operator":data["trainingProgramsDetails"].includes("Assembly Line Operator & Through Hole Assembly Operator") ? 1 : 0,
+        "fabric_textile":data["trainingProgramsDetails"].includes("Fabric and Textile Designing") ? 1 : 0,
+        "nursing":data["trainingProgramsDetails"].includes("Nursing Assistant") ? 1 : 0,
+        "panchakarma":data["trainingProgramsDetails"].includes("Panchakarma Technician") ? 1 : 0,
+        "animation":data["trainingProgramsDetails"].includes("Animation & Multimedia Assistant") ? 1 : 0,
+        "digital_marketing":data["trainingProgramsDetails"].includes("Digital Marketing") ? 1 : 0,
+        "digital_media_production":data["trainingProgramsDetails"].includes("Digital Media Production") ? 1 : 0,
+        "bakery":data["trainingProgramsDetails"].includes("Bakery Course") ? 1 : 0,
+        "architecture":data["trainingProgramsDetails"].includes("The Architecture & Civil 2 D Drafting with Auto Cad") ? 1 : 0,
+        "iata":data["trainingProgramsDetails"].includes("IATA Cargo Supply Chain & Transport Modes") ? 1 : 0,
+      }
+    );  
+  }
+
   if(data["traditionalSkills"].length === 0){
     db.insertTraditionalSkills(
       {
