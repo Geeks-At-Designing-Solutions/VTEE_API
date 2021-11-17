@@ -153,6 +153,26 @@ vteeDBOperations.insertTraditionalSkills = (data)=>{
   });
 }
 
+vteeDBOperations.updateIncludedInPSCRanklist = (data)=>{
+  return new Promise((resolve,reject)=>{
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          conn.query('UPDATE profile SET included_in_psc_ranklist = ? WHERE profile_id = ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Update psc_ranklist ID:', data[1]);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert employement_data: ${err.message}`);
+    }
+  });
+}
+
 vteeDBOperations.insertEmployementData = (data)=>{
   return new Promise((resolve,reject)=>{
     try {

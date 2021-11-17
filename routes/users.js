@@ -24,6 +24,7 @@ router.post('/', async (req, res, next)=>{
       "father_field_of_study":data["profile"]["fatherFieldOfStudy"],
       "mother_education":data["profile"]["motherEducation"],
       "mother_field_of_study":data["profile"]["motherFieldOfStudy"],
+      "included_in_psc_ranklist":"NO",
     }
   );
 
@@ -174,8 +175,12 @@ router.post('/', async (req, res, next)=>{
     );  
   }
 
-  if(data["previousEmployement"].length !== 0){
-    for(const employement of data["previousEmployement"]){
+  db.updateIncludedInPSCRanklist(
+    [data["previousEmployement"]["includedInPSCRankList"],profileId]
+  );
+
+  if(data["previousEmployement"]["previousEmployementDetails"].length !== 0){
+    for(const employement of data["previousEmployement"]["previousEmployementDetails"]){
     db.insertEmployementData(
         {
           "profile_id":profileId,

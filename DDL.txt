@@ -16,6 +16,7 @@ CREATE TABLE profile(
     father_field_of_study VARCHAR(1024),
     mother_education VARCHAR(255),
     mother_field_of_study VARCHAR(1024),
+    included_in_psc_ranklist VARCHAR(255),
     PRIMARY KEY(profile_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
