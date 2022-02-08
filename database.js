@@ -313,4 +313,24 @@ vteeDBOperations.getEndPoint = ()=>{
   });
 }
 
+vteeDBOperations.insertTrainingProgramsAlternate = (data)=>{
+  return new Promise((resolve,reject)=>{
+    try {
+      pool.getConnection((err, conn)=>{
+        if (err){
+          console.log(err);
+        }else{
+          conn.query('INSERT INTO training_programs_alternate SET ?', data, (err, res) => {
+            if(err) throw err;
+            console.log('Last insert Training Programs Alternate ID:', res.insertId);
+          });
+          conn.release();
+        }
+      });
+    } catch (err) {
+      console.log(`Error doing insert training_programs_alternate: ${err.message}`);
+    }
+  });
+}
+
 module.exports = vteeDBOperations;

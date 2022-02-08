@@ -235,6 +235,24 @@ router.post('/', async (req, res, next)=>{
   res.end();
 });
 
+router.post('/alternate', async (req, res, next)=>{
+  let data = req.body;
+  console.log(data);
+
+  db.insertTrainingProgramsAlternate(
+    {
+      "mergious_id":data["mergiousId"],
+      "priority_1":data["trainingProgramsDetails"][0] == "" ? "N/A" : data["trainingProgramsDetails"][0],
+      "priority_2":data["trainingProgramsDetails"][1] == "" ? "N/A" : data["trainingProgramsDetails"][1],
+      "priority_3":data["trainingProgramsDetails"][2] == "" ? "N/A" : data["trainingProgramsDetails"][2],
+      "priority_4":data["trainingProgramsDetails"][3] == "" ? "N/A" : data["trainingProgramsDetails"][3],
+      "priority_5":data["trainingProgramsDetails"][4] == "" ? "N/A" : data["trainingProgramsDetails"][4],
+    }
+  );
+
+  res.end();
+});
+
 router.get('/', async (req, res, next)=>{
   db.getEndPoint().then((data)=>{
     res.json(data[0]);

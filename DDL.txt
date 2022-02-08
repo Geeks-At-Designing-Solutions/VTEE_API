@@ -181,3 +181,14 @@ CREATE TABLE config(
     flag INTEGER,
     PRIMARY KEY(config_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE training_programs_alternate(
+    training_program_alternate_id INTEGER NOT NULL AUTO_INCREMENT,
+    mergious_id INTEGER,
+    priority_1 VARCHAR(255),
+    priority_2 VARCHAR(255),
+    priority_3 VARCHAR(255),
+    priority_4 VARCHAR(255),
+    priority_5 VARCHAR(255),
+    PRIMARY KEY(training_program_alternate_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
