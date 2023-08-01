@@ -1,18 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../database");
-const Sentry = require("@sentry/node");
-
-Sentry.init({
-  dsn: "https://0fff11374c584124a7974bbe0418531c@o1066676.ingest.sentry.io/6208519",
-  tracesSampleRate: 0,
-});
 
 router.post("/", async (req, res, next) => {
-  const transaction = Sentry.startTransaction({
-    op: "production",
-    name: "span /",
-  });
   try {
     let data = req.body;
     let profileId = -1;
@@ -298,20 +288,15 @@ router.post("/", async (req, res, next) => {
               ],
       });
     }
-
     res.end();
   } catch (e) {
-    Sentry.captureException(e);
-  } finally {
-    transaction.finish();
-  }
+      console.log(
+        `Error handling post request: ${err.message}`
+      );
+    }
 });
 
 router.post("/alternate", async (req, res, next) => {
-  const transaction = Sentry.startTransaction({
-    op: "production",
-    name: "post /alternate",
-  });
   try {
     let data = req.body;
     console.log(data);
@@ -340,26 +325,22 @@ router.post("/alternate", async (req, res, next) => {
     });
     res.end();
   } catch (e) {
-    Sentry.captureException(e);
-  } finally {
-    transaction.finish();
-  }
+    console.log(
+      `Error handling post alternate: ${err.message}`
+    );
+    }
 });
 
 router.get("/", async (req, res, next) => {
-  const transaction = Sentry.startTransaction({
-    op: "production",
-    name: "get /",
-  });
   try {
     db.getEndPoint().then((data) => {
       res.json(data[0]);
     });
   } catch (e) {
-    Sentry.captureException(e);
-  } finally {
-    transaction.finish();
-  }
+    console.log(
+      `Error handling get request: ${err.message}`
+    );
+    } 
 });
 
 module.exports = router;
