@@ -9,7 +9,7 @@ Sentry.init({
 //db config
 var pool = mysql.createPool({
   connectionLimit: 10,
-  host: "156.67.222.81",
+  host: "82.180.152.204",
   user: "u250186539_vtee",
   password: "Vtee@123",
   database: "u250186539_vtee",

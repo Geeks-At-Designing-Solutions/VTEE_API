@@ -8,7 +8,7 @@ var db = require('./database');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var PORT = process.env.PORT || 6000;
+var PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{
     console.log("api is listening at port", PORT)
 })
